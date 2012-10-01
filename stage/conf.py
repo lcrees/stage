@@ -33,7 +33,9 @@ class ConfFactory(_BaseFactory):
 
     def __init__(self):
         super(ConfFactory, self).__init__()
+        # all configuration
         self._all = {}
+        # context tracking
         self._these = self._this = None
 
     def __getattr__(self, key, getr=object.__getattribute__):
@@ -62,7 +64,7 @@ class DeepConf(_BaseFactory):
         super(DeepConf, self).__init__()
         # all configuration
         self._all = {}
-        # everthing else
+        # context tracking
         self._these = self._this = self._other = self._out = None
 
     def __enter__(self):
@@ -77,7 +79,7 @@ class DeepConf(_BaseFactory):
             return getr(self, key)
         except AttributeError:
             if not key.startswith('__'):
-                self._this = intern(key.upper())
+                self._this = intern(key)
                 return self
 
     def __call__(self, *args):
