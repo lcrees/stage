@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 
 
 def getversion(fname):
-    '''Get __version__ without importing.'''
+    '''Get `__version__` without importing.'''
     for line in open(fname):
         if line.startswith('__version__'):
             return '%s.%s.%s' % eval(line[13:].rstrip())
@@ -34,7 +34,7 @@ setup(
     zip_safe=False,
     install_requires=install_requires,
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',

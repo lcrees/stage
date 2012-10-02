@@ -2,9 +2,7 @@
 Configuration over convention.
 ==============================
 
-**************************
-Class based configuration:
-**************************
+Classy configuration:
 
     >>> from stage import Conf
     >>> class defaults:
@@ -74,10 +72,8 @@ Class based configuration:
     '%a, %d %b %Y %H:%M:%S'
     >>> config.STREAM.ENABLED
     True
-    
-**********************************
-Process environment configuration:
-**********************************
+
+Telepathic environment configuration:
 
     >>> from stage import TwoDeep, Env, env
     >>> required = TwoDeep()
@@ -140,6 +136,10 @@ Process environment configuration:
         1
         ROTATE.INTERVAL
         'h'
+
+Meanwhile, in some other module...    
+
+    >>> from stage import env
     >>> config = env()
     >>> with config.LOG as LOG:
         LOG.LEVEL
@@ -159,4 +159,7 @@ Process environment configuration:
         ROTATE.BACKUPS
         1
         ROTATE.INTERVAL
-        'h'    
+        'h'
+        
+*******
+Spooky.

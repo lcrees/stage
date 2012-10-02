@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from stage.conf import TwoDeep
+from stage.conf import With
 
-defaults = TwoDeep()
+defaults = With()
 with defaults.LOG:
     defaults.NAME('root')
     # log level
@@ -31,7 +31,7 @@ with defaults.ROTATE:
     defaults.ENCODING(None)
     defaults.MODE('a')
     defaults.SIZE(0)
-required = TwoDeep()
+required = With()
 
 with required.SMTP:
     required.ENABLED(False)

@@ -126,7 +126,7 @@ class BaseConf(ResetMixin):
         return self._wrapper(end)
 
 
-class TwoDeep(ConfFactory):
+class With(ConfFactory):
 
     '''Factory for two-level deep configuration.'''
 

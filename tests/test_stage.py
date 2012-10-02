@@ -442,8 +442,8 @@ class TestClassImportConf(Base, unittest.TestCase):
 class TestTwoDeep(Base, unittest.TestCase):
 
     def setUp(self):
-        from stage.conf import TwoDeep
-        defaults = TwoDeep()
+        from stage.conf import With
+        defaults = With()
         with defaults.LOG:
             defaults.NAME('root')
             # log level
@@ -472,7 +472,7 @@ class TestTwoDeep(Base, unittest.TestCase):
             defaults.ENCODING(None)
             defaults.MODE('a')
             defaults.SIZE(0)
-        required = TwoDeep()
+        required = With()
         with required.SMTP:
             required.ENABLED(False)
             # to email address
