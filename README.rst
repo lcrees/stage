@@ -124,15 +124,11 @@ Process environment configuration:
         defaults.FACILITY('LOG_USER')  
     >>> config = With(defaults, required).freeze()
     >>> with config.LOG as LOG:
-       LOG.NAME
-       'root'
+        LOG.NAME
+        'root'
         LOG.LEVEL
         30
-        LOG.DATE
-        '%a, %d %b %Y %H:%M:%S'
     >>> with config.STREAM as STREAM:
-        STREAM.ENABLED
-        True
         STREAM.LEVEL
         30
         STREAM.STDOUT
@@ -140,16 +136,12 @@ Process environment configuration:
     >>> with config.ROTATE as ROTATE:
         ROTATE.ENABLED
         False
-        ROTATE.PATH
-        ''
         ROTATE.BACKUPS
         1
         ROTATE.INTERVAL
         'h'
     >>> config = env()
     >>> with config.LOG as LOG:
-       LOG.NAME
-       'root'
         LOG.LEVEL
         30
         LOG.DATE
@@ -164,8 +156,6 @@ Process environment configuration:
     >>> with config.ROTATE as ROTATE:
         ROTATE.ENABLED
         False
-        ROTATE.PATH
-        ''
         ROTATE.BACKUPS
         1
         ROTATE.INTERVAL
