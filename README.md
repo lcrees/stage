@@ -1,0 +1,4 @@
+stage
+=====
+
+Configuration over convention.
