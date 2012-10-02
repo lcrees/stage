@@ -36,7 +36,7 @@ Class based configuration:
             PORT = 514
             # syslog facility
             FACILITY = 'LOG_USER'
-   >>> class required:
+    >>> class required:
         class LOG:
             NAME = 'root'
             # log level
