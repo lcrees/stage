@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
-'''Pythonic configuration'''
+'''Pythonic configuration.'''
 
-__version__ = (0, 9, 5)
+__version__ = (0, 2, 1)
