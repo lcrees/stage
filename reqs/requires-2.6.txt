@@ -2,4 +2,4 @@ ordereddict
 importlib
 parse>=1.5.1
 stuf==0.9.6
-knife==0.5.10
+knife==0.5.11

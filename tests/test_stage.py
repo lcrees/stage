@@ -510,3 +510,52 @@ class TestTwoDeepImport(Base, unittest.TestCase):
     def setUp(self):
         self.defaults = 'tests.twodeep.defaults'
         self.required = 'tests.twodeep.required'
+
+
+class TestLocalConf(unittest.TestCase):
+
+    def test_local_conf(self):
+        from stage.conf import localconf
+
+        class Foo(object):
+            class Meta:
+                # anchor link label
+                anchor_link = ''
+                fork_link = ''
+                fts_index = ''
+                index = ''
+                reference_link = ''
+                root_index = 'roots'
+                slug_field = ''
+                version_link = ''
+                versioned = False
+
+        class Bar(Foo):
+
+            class Meta:
+                fork_link = 'BAR_OF'
+                fts_index = 'bar_text'
+                index = 'cons'
+                reference_link = 'BAR_NODE_OF'
+                slug_field = 'slug'
+                version_link = 'BAR_VERSION_OF'
+                versioned = False
+
+        class FooBar(Bar):
+
+            class Meta:
+                index = 'bar'
+                anchor_link = 'foo'
+                reference_link = 'FORK_NODE_OF'
+                versioned = True
+
+        this = localconf(FooBar)
+        self.assertEqual(this.root_index, 'roots')
+        self.assertTrue(this.versioned)
+        self.assertEqual(this.index, 'bar')
+        self.assertEqual(this.anchor_link,  'foo')
+        self.assertEqual(this.fork_link,  'BAR_OF')
+        self.assertEqual(this.fts_index,  'bar_text')
+        self.assertEqual(this.reference_link,  'FORK_NODE_OF')
+        self.assertEqual(this.slug_field,  'slug')
+        self.assertEqual(this.version_link,  'BAR_VERSION_OF')

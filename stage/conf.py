@@ -18,6 +18,16 @@ _ACCESS_SLOTS = '_defaults _required'.split()
 _CONF_SLOTS = '_conf _this _current'.split()
 
 
+def localconf(this, attribute='Meta', *args, **kw):
+    '''
+    Load local configuration from `attribute` on `this` class and its base
+    classes (plus any custom configuration).
+    '''
+    return (lazyknife(this).mro().attrs(attribute).traverse().attrs('maps')
+    .merge().params(*args, **kw).invoke('update').reverse().mapping()
+    .wrap(frozenstuf).get())
+
+
 class _BaseFactory(object):
 
     '''Base configuration factory.'''
@@ -195,10 +205,11 @@ class env(Access):
         self._conf = envz = environ
         if conf is not None:
             dumps = pickle.dumps
+            b64enc = b64encode
             # populate os.environ
             for k, v in items(conf):
                 for x, y in items(v):
-                    envz[join((k, x))] = b64encode(dumps(y)).decode('utf-8')
+                    envz[join((k, x))] = b64enc(dumps(y)).decode('utf-8')
 
     def __enter__(self):
         # make default key
